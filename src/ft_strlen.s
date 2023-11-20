@@ -3,8 +3,6 @@ section .text
 
 _ft_strlen:
 	xor		rax, rax
-	cmp		rdi, 0
-	je		return
 	jmp		check
 increment:
 	add		rax, 1
