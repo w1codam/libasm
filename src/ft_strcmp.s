@@ -14,19 +14,25 @@ ft_strcmp:
 compare:
 	mov		r9b, BYTE [ rdi + r8 ]
 	cmp		r9b, BYTE [ rsi + r8 ]
-	; cmp		BYTE [ rdi + r8 ], BYTE [ rsi + r8 ]
-	jne		not_equal
-; now we check if one of em is 0
+	jl		less
+	jg		greater
+; now we check if one of em is 0, end of string
 	cmp		BYTE [ rdi + r8 ], 0
 	je		equal
 ; now we continue with da loop
 	add		r8, 1
 	jmp		compare
 equal:
-	xor		rax, rax
+	xor		eax, eax
 	ret
-not_equal:
-; we should check flags here to check which str was actually bigger
-; for now, ret 1 to indicate a dif
-	mov		rax, 1
+less:
+	xor		eax, eax
+	movsx	eax, BYTE [ rdi + r8 ]
+	movsx	r9d, BYTE [ rsi + r8 ]
+	sub		eax, r9d
+	ret
+greater:
+	xor		eax, eax
+	mov		al, BYTE [ rdi + r8 ]
+	sub		al, BYTE [ rsi + r8 ]
 	ret
