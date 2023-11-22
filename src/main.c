@@ -1,10 +1,12 @@
 #include <stdio.h>
-#include "libasm.h"
+#include "../include/libasm.h"
+
 
 int	main(void)
 {
-	char*	str = "hello fellas";
-	size_t	len = ft_strlen(str);
+	const char*	s1	= "hello fellas";
+	const char* s2	= "hello fella";
+	int diff = ft_strcmp(s1, s2);
 
-	printf("[%s] %d \n", str, len);
+	printf("%d\n", diff);
 }
