@@ -1,14 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "../include/libasm.h"
 
 
 int	main(void)
 {
-	const char*	s1	= "abc 9";
-	const char* s2	= "abc b";
-	int diff = ft_strcmp(s1, s2);
-	int correct = strcmp(s1, s2);
+	const char*	src		= "hello\n";
+	char dst[100];
 
-	printf("%d, %d\n", correct, diff);
+	ssize_t r = ft_read(0, (void*)dst, 99);
+	dst[r] = 0;
+	ft_write(1, dst, ft_strlen(dst));
 }

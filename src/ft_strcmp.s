@@ -3,9 +3,6 @@ section .text
 
 ; rdi = str1
 ; rsi = str2
-; compare rdi and rsi, if equal, ret 0
-; for each iteration, check if rdi[i] = 0, if that is the case, return whether rsi[i] is bigger, equal or smaller
-; if rdi[i] is not 0, compare with rsi[i] and return whether its bigger, equal or smaller
 
 ft_strcmp:
 	cmp		rdi, rsi
@@ -16,10 +13,8 @@ compare:
 	cmp		r9b, BYTE [ rsi + r8 ]
 	jl		less
 	jg		greater
-; now we check if one of em is 0, end of string
-	cmp		BYTE [ rdi + r8 ], 0
+	cmp		BYTE [ rdi + r8 ], 0	; check for end of string
 	je		equal
-; now we continue with da loop
 	add		r8, 1
 	jmp		compare
 equal:
@@ -27,7 +22,7 @@ equal:
 	ret
 less:
 	xor		eax, eax
-	movsx	eax, BYTE [ rdi + r8 ]
+	movsx	eax, BYTE [ rdi + r8 ]	; move sign extend
 	movsx	r9d, BYTE [ rsi + r8 ]
 	sub		eax, r9d
 	ret
