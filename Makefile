@@ -3,7 +3,7 @@ CC		= gcc
 AR		= ar
 RM		= rm -fr
 NASM	= nasm
-ARCH	= elf64
+NFlAGS	= -f elf64
 # CFLAGS	= -Wall -Werror -Wextra
 
 
@@ -23,7 +23,7 @@ dirs:
 	mkdir -p obj
 
 obj/%.o: src/%.s
-	$(NASM) -f $(ARCH) -o $@ $<
+	$(NASM) $(NFLAGS) -o $@ $<
 
 $(NAME): $(OBJS)
 	$(AR) rcs $(NAME) $(OBJS)
