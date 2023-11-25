@@ -7,7 +7,7 @@ ft_strlen:
 increment:
 	add		rax, 1
 check:
-	cmp		BYTE [rdi + rax], 0
+	cmp		BYTE [ rdi + rax ], 0
 	jne		increment
 return:
 	ret

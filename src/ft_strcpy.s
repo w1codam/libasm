@@ -12,7 +12,7 @@ increment:
 check:
 	mov		dl, BYTE [ rsi + rax ]
 	mov		BYTE [ rdi + rax ], dl
-	cmp		BYTE [rsi + rax], 0
+	cmp		BYTE [ rsi + rax ], 0
 	jne		increment
 return:
 	mov		rax, rdi
