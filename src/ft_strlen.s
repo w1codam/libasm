@@ -5,7 +5,7 @@ ft_strlen:
 	xor		rax, rax
 	jmp		check
 increment:
-	add		rax, 1
+	inc		rax
 check:
 	cmp		BYTE [ rdi + rax ], 0
 	jne		increment

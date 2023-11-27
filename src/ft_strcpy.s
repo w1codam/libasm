@@ -8,7 +8,7 @@ ft_strcpy:
 	xor		rax, rax
 	jmp		check
 increment:
-	add		rax, 1
+	inc		rax
 check:
 	mov		dl, BYTE [ rsi + rax ]
 	mov		BYTE [ rdi + rax ], dl

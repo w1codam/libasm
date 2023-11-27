@@ -15,7 +15,7 @@ compare:
 	jg		greater
 	cmp		BYTE [ rdi + r8 ], 0	; check for end of string
 	je		equal
-	add		r8, 1
+	inc		r8
 	jmp		compare
 equal:
 	xor		eax, eax
