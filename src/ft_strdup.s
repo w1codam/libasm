@@ -12,13 +12,11 @@ ft_strdup:
 	mov		rdi, rax	; put result of strlen in rdi
 	inc		rdi			; 0 byte
 	call	malloc
-	pop		rdi
+	pop		rsi			; rsi = src for ft_strcpy
 	cmp		rax, 0		; check malloc return
 	jz		failure
 
 	; rdi = dest
-	; rsi = src
-	mov		rsi, rdi
 	mov		rdi, rax
 	call	ft_strcpy
 	jmp		return
