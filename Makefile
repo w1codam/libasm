@@ -1,10 +1,11 @@
 NAME	= libasm.a
 CC		= gcc
 AR		= ar
+ARFLAGS	= rcs
 RM		= rm -fr
 NASM	= nasm
-NFlAGS	= -f elf64
-# CFLAGS	= -Wall -Werror -Wextra
+NFLAGS	= -f elf64
+CFLAGS	= -Wall -Werror -Wextra
 
 
 SRCS 	= src/ft_strlen.s \
@@ -26,7 +27,7 @@ obj/%.o: src/%.s
 	$(NASM) $(NFLAGS) -o $@ $<
 
 $(NAME): $(OBJS)
-	$(AR) rcs $(NAME) $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 clean:
 	$(RM) obj
@@ -37,9 +38,7 @@ fclean:	clean
 re:		fclean dirs $(NAME)
 
 test:	dirs $(NAME)
-	# $(CC) $(CFLAGS) -c src/main.c -o obj/main.o
-	$(CC) -o prog -no-pie -I include src/main.c $(NAME)
-	# $(RM) obj/main.o
+	$(CC) src/main.c -L. -lasm -I include $(CFLAGS) -o prog
 	@echo "=================================================="
 	@./prog
 	@echo "=================================================="
