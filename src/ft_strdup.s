@@ -11,7 +11,7 @@ ft_strdup:
 	push	rdi
 	mov		rdi, rax	; put result of strlen in rdi
 	inc		rdi			; 0 byte
-	call	malloc
+	call	malloc WRT ..plt
 	pop		rsi			; rsi = src for ft_strcpy
 	cmp		rax, 0		; check malloc return
 	jz		failure

@@ -38,7 +38,7 @@ fclean:	clean
 re:		fclean dirs $(NAME)
 
 test:	dirs $(NAME)
-	$(CC) src/main.c -L. -lasm -I include $(CFLAGS) -o prog
+	$(CC) -o prog src/main.c -L. -lasm -I include $(CFLAGS)
 	@echo "=================================================="
 	@./prog
 	@echo "=================================================="
