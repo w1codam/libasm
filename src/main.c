@@ -50,19 +50,6 @@ void check_write(int fd1, int fd2, char *str, int len) {
 	errno = 0;
 }
 
-// void check_valid_read(int fd1, int read_size) {
-//     dprintf(1, "Checking ft_read with file descriptor: %d and read size: %d\n", fd1, read_size);
-//     char buffer1[BUFFER_SIZE] = {0};
-//     char buffer2[BUFFER_SIZE] = {0};
-
-//     fd1 = open("mock-write.txt", O_RDONLY);
-//     ssize_t expected_res = read(fd1, buffer1, read_size);
-//     close(fd1);
-//     fd1 = open("mock-write.txt", O_RDONLY);
-//     ssize_t obtained_res = ft_read(fd1, buffer2, read_size);
-//     dprintf(1, "Expected read size: %zd, Obtained: %zd\n", expected_res, obtained_res);
-// }
-
 void check_read(int fd1, int fd2, int read_size) {
     dprintf(1, "Checking ft_read with file descriptor: %d and read size: %d\n", fd1, read_size);
     char buffer1[BUFFER_SIZE] = {0};
